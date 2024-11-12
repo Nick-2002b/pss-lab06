@@ -7,16 +7,24 @@ public class ExtendedStrictBankAccount extends SimpleBankAccount {
         super(id, balance);
     }
     
-    private boolean isWithdrawAllowed(final double amount){
+    private boolean isWithdrawAllowed(final double amount) {
         if (amount <= getBalance()){
             return true;
         }
         return false;
     }
+
     @Override
-    public void chargeManagementFees(final int id){
+    public void withdraw(final int id, final double amount) {
+        if (isWithdrawAllowed(amount)) {
+            super.withdraw(id, amount);
+        }
+    }
+    
+    @Override
+    public void chargeManagementFees(final int id) {
         final double feeAmount = MANAGEMENT_FEE + getTransactionsCount() * ExtendedStrictBankAccount.TRANSACTION_FEE;
-        if(checkUser(id) && isWithdrawAllowed(feeAmount)){
+        if (checkUser(id) && isWithdrawAllowed(feeAmount)) {
             withdraw(id, feeAmount);
             resetTransactions();
         }
