@@ -15,13 +15,18 @@ class TestStrictBankAccount {
     // Create a new AccountHolder and a StrictBankAccount for it each time tests are executed.
     private AccountHolder mRossi;
     private BankAccount bankAccount;
-
+    private AccountHolder nico;
+    private StrictBankAccount strictBankAccount;
     /**
      * Prepare the tests.
      */
     @BeforeEach
     public void setUp() {
-        fail("To be implemented");
+        this.mRossi = new AccountHolder("Mario", "Rossi", 0);
+        this.nico = new AccountHolder("Nico", "Verdi", 1);
+        this.bankAccount = new SimpleBankAccount(mRossi, 0.0);
+        this.strictBankAccount = new StrictBankAccount(nico, 0.0);
+        // fail("To be implemented");
     }
 
     /**
