@@ -55,6 +55,15 @@ class TestStrictBankAccount {
         bankAccount.deposit(0, 100);
         assertEquals(100, bankAccount.getBalance());
         
+        strictBankAccount.deposit(1, 100);
+        assertEquals(100, strictBankAccount.getBalance());
+        
+        bankAccount.chargeManagementFees(0);
+        assertEquals(95, bankAccount.getBalance());
+
+        strictBankAccount.chargeManagementFees(1);
+        assertEquals(85, strictBankAccount.getBalance());
+        
         // fail("To be implemented");
     }
 
